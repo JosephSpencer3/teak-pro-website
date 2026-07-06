@@ -46,6 +46,7 @@ body {
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -142,11 +143,11 @@ h3 { font-size: 1.3rem; }
 .brand { display: flex; align-items: center; gap: 10px; }
 .brand__mark { width: 38px; height: 38px; flex-shrink: 0; }
 .brand__name {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.28rem;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1.3rem;
   color: var(--teak-dark);
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
 }
 .brand__name span { color: var(--gold); }
 
@@ -233,6 +234,7 @@ h3 { font-size: 1.3rem; }
   box-shadow: var(--shadow-lg);
   aspect-ratio: 4 / 5;
 }
+.hero__visual .compare { aspect-ratio: auto; height: 100%; }
 
 /* Photo placeholder system — swap in real photos by dropping a file at the
    given src; if the file is missing/broken, a styled placeholder with the
@@ -371,7 +373,6 @@ h3 { font-size: 1.3rem; }
 .compare__before { overflow: hidden; width: 50%; z-index: 2; }
 .compare__before .photo-slot,
 .compare__after .photo-slot { width: 100%; height: 100%; }
-.compare__before .photo-slot { width: 100vw; max-width: none; }
 .compare__before-inner { width: 100%; height: 100%; position: relative; }
 .compare__handle {
   position: absolute;
@@ -773,6 +774,23 @@ h3 { font-size: 1.3rem; }
 }
 .cta-band .btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
 .cta-band p { color: #C9C3B4; }
+.cta-band .eyebrow { color: var(--gold-light); }
+.cta-band h2, .cta-band h3 { color: #F3ECDE; }
+
+/* ---------- Big phone (Contact page) ---------- */
+.big-phone {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--teak-dark);
+  font-size: clamp(1.3rem, 7vw, 5rem);
+  text-align: center;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.big-phone:hover { color: var(--gold); }
 
 /* ---------- Utilities ---------- */
 .mt-0 { margin-top: 0; }
@@ -812,4 +830,14 @@ h3 { font-size: 1.3rem; }
   .btn { padding: 13px 24px; font-size: 0.92rem; }
   .hero__actions { flex-direction: column; align-items: stretch; }
   .hero__actions .btn { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .nav__inner { padding: 14px 16px; }
+  .brand__mark { width: 32px; height: 32px; }
+  .brand__name { font-size: 1.05rem; }
+}
+
+@media (max-width: 460px) {
+  .nav__cta .btn--sm { display: none; }
 }
