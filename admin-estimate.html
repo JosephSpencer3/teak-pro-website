@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Estimator — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="adm">
+  <!-- Password gate -->
+  <div class="adm-gate" id="gate">
+    <form class="adm-gate__box" id="gate-form" autocomplete="off">
+      <div class="adm-gate__brand">TEAK<span>PRO</span> · ADMIN</div>
+      <label class="adm-field">
+        <span class="adm-field__label">Passphrase</span>
+        <input type="password" id="gate-input" class="adm-input" autocomplete="off" spellcheck="false" />
+      </label>
+      <button type="submit" class="adm-btn">Unlock</button>
+      <p class="adm-gate__err" id="gate-err" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <!-- Estimator (revealed after unlock) -->
+  <main class="adm-app" id="app" hidden>
+    <header class="adm-head">
+      <h1 class="adm-title">Price Estimator</h1>
+      <p class="adm-sub">Internal ballpark tool · linear model</p>
+    </header>
+
+    <section class="adm-grid">
+      <label class="adm-field">
+        <span class="adm-field__label">Hours</span>
+        <input type="number" id="f-hours" class="adm-input" step="0.25" min="0" value="0" />
+      </label>
+
+      <label class="adm-field">
+        <span class="adm-field__label">Age <em>(years)</em></span>
+        <input type="number" id="f-age" class="adm-input" step="0.5" min="0" value="0" />
+      </label>
+
+      <label class="adm-field">
+        <span class="adm-field__label">Set quality <em>(1–5)</em></span>
+        <input type="number" id="f-quality" class="adm-input" step="0.25" min="0" max="5" value="0" />
+      </label>
+
+      <label class="adm-field">
+        <span class="adm-field__label">Pieces <em>(total)</em></span>
+        <input type="number" id="f-pieces" class="adm-input" step="1" min="0" value="0" />
+      </label>
+
+      <div class="adm-field adm-field--toggle">
+        <span class="adm-field__label">Referred</span>
+        <button type="button" id="f-referred" class="adm-toggle" role="switch" aria-checked="false" data-on="0">
+          <span class="adm-toggle__track"><span class="adm-toggle__thumb"></span></span>
+          <span class="adm-toggle__val">No</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="adm-out">
+      <span class="adm-out__label">Estimated price</span>
+      <div class="adm-out__value" id="price">$0</div>
+    </section>
+
+    <footer class="adm-foot">
+      <button type="button" class="adm-link" id="lock-btn">Lock</button>
+    </footer>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
