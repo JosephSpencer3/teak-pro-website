@@ -34,6 +34,15 @@
   var gateErr = document.getElementById("gate-err");
   var app = document.getElementById("app");
 
+  // --- Estimator field refs (must be assigned before any unlock()/recalc() call) ---
+  var elHours = document.getElementById("f-hours");
+  var elAge = document.getElementById("f-age");
+  var elQuality = document.getElementById("f-quality");
+  var elPieces = document.getElementById("f-pieces");
+  var elReferred = document.getElementById("f-referred");
+  var elReferredVal = elReferred.querySelector(".adm-toggle__val");
+  var elPrice = document.getElementById("price");
+
   // --- Hashing helper (SubtleCrypto; requires secure context: https or localhost) ---
   function sha256Hex(text) {
     var data = new TextEncoder().encode(text);
@@ -91,14 +100,6 @@
   });
 
   // --- Estimator ---
-  var elHours = document.getElementById("f-hours");
-  var elAge = document.getElementById("f-age");
-  var elQuality = document.getElementById("f-quality");
-  var elPieces = document.getElementById("f-pieces");
-  var elReferred = document.getElementById("f-referred");
-  var elReferredVal = elReferred.querySelector(".adm-toggle__val");
-  var elPrice = document.getElementById("price");
-
   function num(el) {
     var v = parseFloat(el.value);
     return isNaN(v) ? 0 : v;
